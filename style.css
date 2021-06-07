@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    background-color: #f2f2f2;
+}
+.game {
+    width: 800px;
+    height: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 40px auto;
+    /*stworzenie perspektywy 3d dla gry*/
+    perspective: 1000px;
+}
+.card {
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+    margin: 5px;
+    border: 2px solid thistle;
+    transform: scale(1);
+    position: relative;
+    /*dziala z perspektywa, obracamy karty w 3d*/
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+.card:active {
+    transform: scale(.97);
+    transition: transform .2s;
+}
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: auto; 
+    padding: 10px;
+    backface-visibility: hidden;
+}
+.back {
+    transform: rotateY(180deg);
+}
+.card.flip {
+    transform: rotateY(180deg);
+}
+.card.none {
+    pointer-events: none;
+}
