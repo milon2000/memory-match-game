@@ -1,12 +1,14 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
 body {
     height: 100vh;
     background-color: #f2f2f2;
 }
+
 .game {
     width: 800px;
     height: 440px;
@@ -16,34 +18,106 @@ body {
     /*stworzenie perspektywy 3d dla gry*/
     perspective: 1000px;
 }
+
 .card {
     width: calc(25% - 10px);
     height: calc(33.333% - 10px);
     margin: 5px;
-    border: 2px solid thistle;
+    border: 2px solid palevioletred;
     transform: scale(1);
     position: relative;
     /*dziala z perspektywa, obracamy karty w 3d*/
     transform-style: preserve-3d;
     transition: transform .5s;
 }
+
 .card:active {
     transform: scale(.97);
     transition: transform .2s;
 }
-.front, .back {
+
+.front,
+.back {
     position: absolute;
     width: 100%;
-    height: auto; 
+    height: auto;
     padding: 10px;
     backface-visibility: hidden;
 }
+
 .back {
     transform: rotateY(180deg);
 }
+
 .card.flip {
     transform: rotateY(180deg);
 }
+
 .card.none {
     pointer-events: none;
+}
+
+.container {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.start-stopwatch {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.start-stopwatch {
+    width: 300px;
+    height: 100px;
+    cursor: pointer;
+    font-size: 35px;
+    font-weight: bold;
+    color: palevioletred;
+    text-transform: uppercase;
+    background: white;
+    border: 3px solid palevioletred;
+    box-shadow: 5px 5px 0 palevioletred,
+        -5px -5px 0 palevioletred,
+        -5px 5px 0 palevioletred,
+        5px -5px 0 palevioletred;
+    transition: 500ms ease-in-out;
+    margin: 30px 10px;
+}
+
+.start-stopwatch:hover {
+    box-shadow: 20px 5px 0 palevioletred, -20px -5px 0 palevioletred;
+}
+
+.start-stopwatch:focus {
+    outline: none;
+}
+
+.stopwatch {
+    padding: 10px 15px;
+    font-size: 40px;
+    color: palevioletred;
+
+}
+
+.disabled {
+    color: grey;
+    box-shadow: none;
+    border: 3px solid grey;
+    cursor: default;
+}
+
+.disabled:hover {
+    box-shadow: none;
+}
+
+.results {
+    font-size: 30px;
+    color: palevioletred;
 }
